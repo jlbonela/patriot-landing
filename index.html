@@ -1,0 +1,338 @@
+<title>Patriot Winner Page</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600;700;800&family=Lato:wght@400;700;900&display=swap">
+<style>
+:root{
+  --cream:#F7F5F0; --paper:#FFFFFF; --navy:#0B2D4B; --red:#C5333D; --charcoal:#1F2430; --slate:#718096;
+  --line:#E2DED4; --navy-soft:#E6ECF2; --red-soft:#F8E5E6;
+  /* White page in every mode — deliberate single-theme (client request 2026-09-21) */
+  --bg:#FFFFFF; --card:var(--paper); --ink:var(--charcoal); --ink2:#4A5568; --ink3:var(--slate); --head:var(--navy);
+  --wave:var(--navy); --wave-ink:var(--cream);
+  --disp:"Roboto Slab","DejaVu Serif",Georgia,serif; --sans:"Lato","Helvetica Neue",Arial,sans-serif; --maxw:1100px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--disp);color:var(--head);line-height:1.08;margin:0;text-wrap:balance}
+p{margin:0} a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:20px}
+.sec{padding-block:56px;border-top:1px solid var(--line)}
+.eyebrow{font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+.ph{font-weight:700;font-size:.9em;background:var(--navy-soft);color:var(--head);padding:0 5px;border-bottom:2px dotted var(--red);border-radius:2px;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--red);color:#fff;font-weight:900;font-size:14.5px;letter-spacing:.08em;text-transform:uppercase;padding:15px 26px;border:0;border-radius:999px;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent;color:var(--head);box-shadow:inset 0 0 0 2px var(--head)}
+.small{font-size:14.5px;color:var(--ink2)} .tiny{font-size:13px;color:var(--ink3)}
+.rule{position:relative;height:4px;background:var(--red);width:120px;margin:16px 0 0;border-radius:2px}
+.rule::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;border-radius:50%;background:var(--red);transform:translate(-50%,-50%);box-shadow:0 0 0 3px var(--bg)}
+.topbar{background:var(--navy);color:var(--cream);font-size:13.5px;font-weight:700;letter-spacing:.04em}
+.topbar .in{max-width:var(--maxw);margin:0 auto;padding:8px 20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.topbar .ph{background:#173F66;color:#fff}
+.nav{display:flex;align-items:center;gap:18px;padding-block:18px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo svg{width:64px;height:auto;flex:none}
+.wordmark{display:flex;flex-direction:column;line-height:1}
+.wordmark b{font-family:var(--disp);font-weight:700;font-size:22px;color:var(--head)}
+.wordmark span{font-weight:700;font-size:10.5px;letter-spacing:.32em;color:var(--head);margin-top:3px}
+.nav-links{display:flex;gap:18px;font-size:14.5px;font-weight:700;color:var(--ink2);flex-wrap:wrap}
+.nav-cta{margin-left:auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.phone{font-weight:900;font-size:15px;color:var(--head)}
+.hero{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start;padding-block:36px 60px;overflow:hidden}
+.hero .mark-bg{position:absolute;right:-40px;top:-10px;width:420px;opacity:.06;pointer-events:none}
+.hero h1{font-size:clamp(36px,5vw,56px);font-weight:800}
+.hero .sub{font-size:19px;color:var(--ink2);margin-top:18px;max-width:56ch}
+.hero .sub b{color:var(--head)}
+.bullets{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.bullets li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:16px;font-weight:700;color:var(--head)}
+.bullets li::before{content:"★";color:var(--red);font-size:14px;line-height:1.6}
+.trustbar{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;padding-top:16px;border-top:1px solid var(--line)}
+.trustbar span{font-size:14px;color:var(--ink2);font-weight:700}
+form{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--red);border-radius:8px;padding:22px;display:grid;gap:12px;box-shadow:0 22px 44px -36px rgba(11,45,75,.55)}
+form h3{font-size:22px;margin-bottom:2px}
+label{font-size:11.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+input,select{width:100%;padding:12px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px}
+.consent{display:grid;grid-template-columns:20px 1fr;gap:10px;font-size:12.5px;color:var(--ink2);line-height:1.45;font-weight:400;letter-spacing:0;text-transform:none}
+.consent input{width:18px;height:18px;padding:0;accent-color:var(--red)}
+.captcha{border:1px dashed var(--line);border-radius:6px;padding:10px 12px;font-size:12.5px;color:var(--ink3);display:flex;align-items:center;gap:10px}
+.captcha i{width:18px;height:18px;border:2px solid var(--ink3);border-radius:3px;display:inline-block}
+.formnote{font-size:13px;color:var(--ink3)}
+h2{font-size:clamp(26px,3.4vw,36px);font-weight:700}
+.lead{font-size:18.5px;color:var(--ink2);margin-top:16px;max-width:70ch}
+.quote{border-left:4px solid var(--red);padding:6px 0 6px 18px;margin-top:22px;font-family:var(--disp);font-weight:600;font-size:18px;color:var(--head);line-height:1.4}
+.quote cite{display:block;font-family:var(--sans);font-weight:400;font-style:normal;font-size:12.5px;color:var(--ink3);margin-top:8px}
+.grid{display:grid;gap:16px;margin-top:26px} .g3{grid-template-columns:repeat(3,1fr)} .g2{grid-template-columns:repeat(2,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px}
+.card h3{font-size:19px;font-weight:700;margin-bottom:8px}
+.card.accent{border-top:5px solid var(--navy)}
+.doc{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--navy);border-radius:8px;padding:22px}
+.doc h4{font-weight:900;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;margin:0 0 14px;color:var(--red)}
+.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dotted var(--line);font-size:15px}
+.row:last-of-type{border-bottom:0}
+.row b{font-family:var(--disp);font-weight:700;color:var(--head);font-variant-numeric:tabular-nums}
+.row.total{border-top:2px solid var(--head);margin-top:6px;padding-top:12px;font-weight:700}
+.locked{margin-top:14px;background:var(--navy-soft);color:var(--head);border-left:4px solid var(--red);border-radius:4px;padding:11px 13px;font-size:14px}
+.strike{color:var(--red);text-decoration:line-through}
+.step{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:0}
+.step .n{font-family:var(--disp);font-weight:800;font-size:15px;color:#fff;background:var(--navy);border-radius:50%;width:36px;height:36px;display:grid;place-items:center}
+.step h3{font-size:20px;margin-bottom:6px}
+.checks{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
+.checks li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:16px}
+.checks li::before{content:"★";color:var(--red);font-size:14px;line-height:1.6}
+table{width:100%;border-collapse:collapse;margin-top:22px;font-size:15px}
+th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:900;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--head)}
+td:first-child{color:var(--ink2)} .yes{color:var(--red);font-weight:900}
+.proof-slot{border:2px dashed var(--line);border-radius:8px;padding:18px;text-align:center;color:var(--ink3);font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;min-height:120px;display:grid;place-items:center}
+details{border-bottom:1px solid var(--line);padding:14px 0}
+summary{font-family:var(--disp);font-weight:700;font-size:17.5px;color:var(--head);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--red);font-weight:900}
+details[open] summary::after{content:"–"}
+details p{margin-top:10px;color:var(--ink2);font-size:16px}
+.faqgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin-top:18px}
+.verify{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px}
+.verify .card{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.verify .ico{width:40px;height:40px;border-radius:50%;background:var(--navy-soft);color:var(--head);display:grid;place-items:center;font-family:var(--disp);font-weight:800;font-size:15px}
+.finalcta{display:grid;grid-template-columns:1fr 480px;gap:32px;align-items:start}
+.wave{margin-top:56px;line-height:0} .wave svg{width:100%;height:auto;display:block}
+footer.site{background:var(--wave);color:var(--wave-ink);padding-block:26px 48px}
+footer.site .in{max-width:var(--maxw);margin:0 auto;padding-inline:20px;display:grid;grid-template-columns:1fr 1.4fr;gap:28px;align-items:start}
+footer.site .logo svg{width:56px} footer.site .wordmark b,footer.site .wordmark span{color:var(--cream)}
+footer.site .tag{font-weight:700;font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--cream);opacity:.9;margin-top:14px}
+footer.site .legal{font-size:13px;color:#C3CCD6;line-height:1.5}
+.sticky-mobile{display:none}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+@media (max-width:900px){.hero,.finalcta,footer.site .in,.faqgrid,.verify{grid-template-columns:1fr}.g3,.g2,.g4{grid-template-columns:1fr}table{display:block;overflow-x:auto}.hero .mark-bg{width:260px;right:-60px}
+  .sticky-mobile{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;gap:8px;padding:10px 12px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));background:var(--navy);border-top:3px solid var(--red)}
+  .sticky-mobile a{flex:1;text-align:center;font-size:13px;padding:12px 10px}.sticky-mobile .call{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px #fff}
+  body{padding-bottom:76px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="phb-mark" viewBox="120 90 760 460">
+    <path d="M 160 310 L 430 120 L 710 310 L 665 310 L 430 150 L 205 310 Z" fill="var(--m1,#0B2D4B)"/>
+    <rect x="595" y="138" width="36" height="90" fill="var(--m1,#0B2D4B)" rx="2"/>
+    <rect x="398" y="225" width="24" height="24" fill="var(--m1,#0B2D4B)"/><rect x="434" y="225" width="24" height="24" fill="var(--m1,#0B2D4B)"/>
+    <rect x="398" y="261" width="24" height="24" fill="var(--m1,#0B2D4B)"/><rect x="434" y="261" width="24" height="24" fill="var(--m1,#0B2D4B)"/>
+    <polygon points="235.0,333.0 253.2,379.9 303.5,382.8 264.5,414.6 277.3,463.2 235.0,436.0 192.7,463.2 205.5,414.6 166.5,382.8 216.8,379.9" fill="var(--m1,#0B2D4B)"/>
+    <path d="M 320 360 C 410 340, 510 348, 610 375 C 670 390, 730 383, 790 360 L 790 392 C 730 418, 670 426, 610 411 C 510 386, 410 378, 320 397 Z" fill="var(--m2,#C5333D)"/>
+    <path d="M 300 420 C 400 395, 510 405, 620 432 C 680 447, 740 440, 810 414 L 810 446 C 740 474, 680 480, 620 466 C 510 438, 400 431, 300 454 Z" fill="var(--m2,#C5333D)"/>
+    <path d="M 280 480 C 390 455, 510 465, 640 492 C 700 505, 765 500, 830 476 L 830 506 C 765 534, 700 539, 640 527 C 510 498, 390 491, 280 514 Z" fill="var(--m2,#C5333D)"/>
+  </symbol>
+</defs></svg>
+
+<!-- BLOCK 0 · top bar: phone first, like the winner -->
+<div class="topbar"><div class="in"><span>Call or text <span class="ph">[FOUNDER]</span> directly: <span class="ph">[PHONE]</span> · 8am–8pm</span><span>Buying in <span class="ph">[AREA]</span> · Closings at <span class="ph">[TITLE COMPANY]</span></span></div></div>
+
+<main>
+  <div class="wrap">
+    <nav class="nav">
+      <a class="logo" href="#"><svg style="--m1:var(--head)"><use href="#phb-mark"/></svg><span class="wordmark"><b>PATRIOT</b><span>HOME BUYER</span></span></a>
+      <span class="nav-links"><a href="#how">How it works</a><a href="#compare">Compare</a><a href="#verify">Verify us</a><a href="#faq">FAQ</a></span>
+      <span class="nav-cta"><span class="phone ph">[PHONE]</span><a class="btn" href="#offer">Get a cash offer</a></span>
+    </nav>
+
+    <!-- BLOCK 1 · hero: their 4-field form in the hero, our headline -->
+    <section class="hero" id="offer">
+      <svg class="mark-bg" aria-hidden="true"><use href="#phb-mark"/></svg>
+      <div>
+        <div class="eyebrow">Sell your house fast in <span class="ph">[AREA]</span></div>
+        <h1 style="margin-top:12px">Cash. As-is. Fast close. And the number doesn't move.</h1>
+        <div class="rule"></div>
+        <p class="sub">No fees. No commissions. No repairs. We pay all standard seller closing costs. And unlike most cash buyers, we walk the house <em>before</em> we write the offer — then lock the price in writing. <b>The number we write is the number you get.</b></p>
+        <ul class="bullets">
+          <li>Written cash offer within 24 hours of the walk-through</li>
+          <li>Close in as little as <span class="ph">[X]</span> days, or on any date you choose</li>
+          <li>Leave the repairs, the cleaning and anything you don't want</li>
+          <li>Price Lock addendum attached to every offer</li>
+        </ul>
+        <div class="trustbar"><span><span class="ph">[REVIEWS]</span> reviews</span><span>Buying since <span class="ph">[YEAR]</span></span><span><span class="ph">[ADDRESS]</span></span></div>
+      </div>
+      <form novalidate>
+        <h3>Get your locked cash offer</h3>
+        <p class="small">Four fields. No obligation. No pressure.</p>
+        <div><label for="f-name">Name</label><input id="f-name"></div>
+        <div><label for="f-addr">Property address</label><input id="f-addr" placeholder="123 Main St, Oklahoma City"></div>
+        <div><label for="f-phone">Phone</label><input id="f-phone" inputmode="tel"></div>
+        <div><label for="f-email">Email</label><input id="f-email" inputmode="email"></div>
+        <label class="consent" for="f-terms"><input type="checkbox" id="f-terms"><span>I agree to the Terms of Use and Privacy Policy.</span></label>
+        <label class="consent" for="f-sms"><input type="checkbox" id="f-sms"><span>I agree that Patriot Home Buyer may call, text or email me about my property at the number provided, including with automated systems. Consent is not a condition of any sale. Msg &amp; data rates may apply. Reply STOP to opt out.</span></label>
+        <div class="captcha"><i></i> I'm not a robot <span class="tiny">(CAPTCHA goes here)</span></div>
+        <button class="btn" type="submit">Get a cash offer</button>
+        <p class="formnote">We don't sell or share your information. Ever.</p>
+      </form>
+    </section>
+
+    <!-- BLOCK 2 · who you're dealing with, without the contradiction -->
+    <section class="sec">
+      <div class="eyebrow">Who you're dealing with</div>
+      <h2 style="margin-top:10px">We are not agents. We're the buyer — and you can check that before you call.</h2>
+      <p class="lead">Patriot Home Buyer buys houses directly, with our own funds. We don't list your house, we don't pass your contract to another investor, and our name goes on the deed at closing. Every one of those claims is something you can verify yourself — see <a href="#verify">Verify us</a> below.</p>
+      <div class="grid g3">
+        <div class="card"><h3>Not a listing</h3><p class="small">No MLS, no showings, no strangers walking through your house.</p></div>
+        <div class="card"><h3>Not a middleman</h3><p class="small">We don't assign contracts. Oklahoma now requires wholesalers to tell you in writing if they plan to resell your contract — we won't need to, because we don't.</p></div>
+        <div class="card"><h3>A person, not a call center</h3><p class="small"><span class="ph">[FOUNDER]</span> answers <span class="ph">[PHONE]</span> — first call to closing.</p></div>
+      </div>
+      <p class="tiny" style="margin-top:14px"><span class="ph">[If anyone at Patriot holds an Oklahoma real estate license, say so here plainly: "[NAME] holds Oklahoma license #[LICENSE], and buys for our own account." Never say "not agents" on the same site where you offer to list.]</span></p>
+    </section>
+
+    <!-- BLOCK 3 · offer math with the seller's own numbers -->
+    <section class="sec" id="how">
+      <div class="eyebrow">How we get to the number</div>
+      <h2 style="margin-top:10px">We show the arithmetic — with your numbers, not a slogan</h2>
+      <p class="lead">We start with recent comparable sales in your neighborhood to see what the house would be worth fixed up. Then we subtract the repairs, our holding and resale costs, and our margin. You see every line before you decide.</p>
+      <div class="grid g2">
+        <div class="doc" aria-label="Example offer calculation">
+          <h4>Your offer sheet · example</h4>
+          <div class="row"><span>What it's worth fixed up (3 comps attached)</span><b>$<span class="ph">[XXX,XXX]</span></b></div>
+          <div class="row"><span>− Repairs (itemized, <span class="ph">[N]</span> lines)</span><b class="strike">$<span class="ph">[XX,XXX]</span></b></div>
+          <div class="row"><span>− Holding, resale and closing costs</span><b class="strike">$<span class="ph">[XX,XXX]</span></b></div>
+          <div class="row"><span>− Our margin (stated, not hidden)</span><b class="strike">$<span class="ph">[XX,XXX]</span></b></div>
+          <div class="row total"><span>Your cash offer, as-is</span><b>$<span class="ph">[XXX,XXX]</span></b></div>
+          <div class="locked"><b>Price Lock attached.</b> This number does not go down for the condition of the house after you sign.</div>
+          <p class="tiny" style="margin-top:12px">Illustration of the format — not a real offer.</p>
+        </div>
+        <div>
+          <div class="step"><div class="n">1</div><div><h3>Call or send the form</h3><p class="small">Two minutes. No credit check, no financial questions.</p></div></div>
+          <div class="step"><div class="n">2</div><div><h3>Walk-through within 24–48 hours</h3><p class="small">30–40 minutes. Don't clean. Don't fix anything. We look at everything so there's nothing to "discover" later.</p></div></div>
+          <div class="step"><div class="n">3</div><div><h3>Written offer within 24 hours, math attached</h3><p class="small">Comps, repair list, our costs, our margin, and the Price Lock addendum.</p></div></div>
+          <div class="step"><div class="n">4</div><div><h3>Close on your date at <span class="ph">[TITLE COMPANY]</span></h3><p class="small">As fast as <span class="ph">[X]</span> days once title is clear. Oklahoma title work usually takes 2–3 weeks.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCK 4 · price certainty as a document, plus we-cancel-we-pay -->
+    <section class="sec">
+      <div class="eyebrow">Price certainty</div>
+      <h2 style="margin-top:10px">The cash offer you see written down is the price you walk away with. Here's the paper that makes it true.</h2>
+      <p class="lead">Most cash buyers say the number won't change. We put it in a one-page addendum you can read before you sign — and we put a penalty on ourselves if we're the ones who back out.</p>
+      <div class="grid g2">
+        <div class="card accent"><h3>Guarantee 1 · Price Lock</h3><p class="small">After you sign, we do not reduce the price for the condition of the house. Only two exceptions, both printed on the addendum: title or lien problems found in the title search, and new damage after our visit.</p><p class="tiny" style="margin-top:10px">Why it exists: 59 Oklahoma-area sellers in our research describe the price dropping after they'd signed and packed.</p></div>
+        <div class="card accent"><h3>Guarantee 2 · Two-way walk-away</h3><p class="small">You can cancel any time before closing and owe nothing. If we back out for any reason other than those title exceptions or your own default, we pay you <span class="ph">[$X]</span>.</p><p class="tiny" style="margin-top:10px">Most cash contracts in Oklahoma charge the seller for backing out and cost the buyer nothing.</p></div>
+      </div>
+      <div class="grid g2" style="margin-top:16px">
+        <blockquote class="quote">"He then proceeded to try to get me to lower my sales price $30000!!"<cite>1★ review of another Oklahoma City cash buyer</cite></blockquote>
+        <blockquote class="quote">"They have a clause that they can charge the seller $5000 if they back out, but there is nothing to protect the seller if THEY back out."<cite>1★ review of another Oklahoma City cash buyer</cite></blockquote>
+      </div>
+      <div style="margin-top:22px"><a class="btn ghost" href="#faq">Read the one-page guarantee</a></div>
+    </section>
+
+    <!-- BLOCK 5 · compare, productized: the two-number report on the page, not hidden -->
+    <section class="sec" id="compare">
+      <div class="eyebrow">Take a look at the numbers</div>
+      <h2 style="margin-top:10px">Cash, as-is — or fix it up and list it? We'll send you both numbers.</h2>
+      <p class="lead">Ask for the two-number report and you'll get, in writing, what we'd pay today and what you'd likely walk away with listing it after repairs, commissions and time on the market. If listing puts more money in your pocket, we'll tell you — and introduce you to an agent we trust.</p>
+      <table>
+        <tr><th></th><th>Sell to Patriot</th><th>List with an agent</th><th>For sale by owner</th></tr>
+        <tr><td>Repairs</td><td class="yes">None</td><td>Usually required</td><td>Usually required</td></tr>
+        <tr><td>Cleaning &amp; showings</td><td class="yes">None</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>Commissions</td><td class="yes">None</td><td>~5–6%</td><td>None, but you do the work</td></tr>
+        <tr><td>Seller closing costs</td><td class="yes">We pay the standard ones</td><td>You pay</td><td>You pay</td></tr>
+        <tr><td>Time to cash</td><td class="yes"><span class="ph">[X]</span> days – 3 weeks</td><td>Weeks to months</td><td>Unpredictable</td></tr>
+        <tr><td>Buyer financing falls through</td><td class="yes">Never — cash</td><td>Possible</td><td>Possible</td></tr>
+        <tr><td>Price certainty</td><td class="yes">Locked in writing</td><td>Offers get renegotiated</td><td>Offers get renegotiated</td></tr>
+        <tr><td>Best when</td><td>Repairs, speed and certainty matter most</td><td>House is updated and you can wait</td><td>You have time and experience</td></tr>
+      </table>
+      <div style="margin-top:22px"><a class="btn" href="#offer">Send me both numbers</a></div>
+    </section>
+
+    <!-- BLOCK 6 · verification stack, matched and extended -->
+    <section class="sec" id="verify">
+      <div class="eyebrow">Verify us</div>
+      <h2 style="margin-top:10px">Five things you can check in five minutes</h2>
+      <div class="verify">
+        <div class="card"><div class="ico">1</div><div><h3>Our purchases in county records</h3><p class="small">Search "Patriot Home Buyer" at the <span class="ph">[COUNTY]</span> County Clerk. Every house we've bought is public record.</p></div></div>
+        <div class="card"><div class="ico">2</div><div><h3>Proof of funds — before you say a word about your house</h3><p class="small">Ask <span class="ph">[FOUNDER]</span> on the first call. You'll have it in your inbox before we schedule anything.</p></div></div>
+        <div class="card"><div class="ico">3</div><div><h3>Closings at <span class="ph">[TITLE COMPANY]</span> — never with us</h3><p class="small">A licensed, insured Oklahoma title company handles every closing and holds your earnest money. You never sign a deed at your kitchen table.</p></div></div>
+        <div class="card"><div class="ico">4</div><div><h3>A real address and a real person</h3><p class="small"><span class="ph">[ADDRESS]</span>. <span class="ph">[FOUNDER]</span>, <span class="ph">[PHONE]</span>. Same person, first call to closing.</p></div></div>
+        <div class="card"><div class="ico">5</div><div><h3>Reviews you can click through to</h3><p class="small"><span class="ph">[REVIEWS]</span> on Google · BBB profile <span class="ph">[BBB ID]</span> · linked, not pasted.</p></div></div>
+        <div class="card"><div class="ico">+</div><div><h3><span class="ph">[License, if any]</span></h3><p class="small"><span class="ph">[If licensed: "[NAME] holds Oklahoma real estate license #[LICENSE]. Verify it at the Oklahoma Real Estate Commission licensee lookup." Otherwise delete this card.]</span></p></div></div>
+      </div>
+    </section>
+
+    <!-- BLOCK 7 · deep FAQ incl. "is this a scam", probate, remote closing -->
+    <section class="sec" id="faq">
+      <div class="eyebrow">Questions people actually ask</div>
+      <h2 style="margin-top:10px">Straight answers, starting with the uncomfortable one</h2>
+      <div class="faqgrid">
+        <div>
+          <details open><summary>Is selling to Patriot Home Buyer a scam? How do I know you're legitimate?</summary><p>Fair question — this category earned its reputation. Don't take our word for it: look up our purchases at the county clerk, ask for proof of funds before you tell us anything, and notice that every closing happens at <span class="ph">[TITLE COMPANY]</span>, not with us. If any of that doesn't check out, walk away.</p></details>
+          <details><summary>Who runs the company?</summary><p><span class="ph">[FOUNDER]</span>, based at <span class="ph">[ADDRESS]</span>. <span class="ph">[Two true sentences about you, how many houses, what you do with them.]</span></p></details>
+          <details><summary>How do you determine the cash offer?</summary><p>Comparable sales for the fixed-up value, minus an itemized repair estimate, minus our holding, resale and closing costs, minus our margin. Every line is on the offer sheet.</p></details>
+          <details><summary>Will the price drop after inspection?</summary><p>No. We inspect before we write the number, and the Price Lock addendum says the price doesn't change for condition after you sign.</p></details>
+          <details><summary>Are there any fees, commissions or closing costs?</summary><p>None. We pay the standard seller-side closing costs. The number on the contract is the number on the settlement statement.</p></details>
+          <details><summary>Do I need to make repairs or clean?</summary><p>No. Leave the repairs. Leave the furniture. Leave anything you don't want to take.</p></details>
+          <details><summary>How fast can you close?</summary><p>As fast as <span class="ph">[X]</span> days once title is clear. Oklahoma title work usually takes 2–3 weeks — anyone promising 7 days on every house should explain what happens when the title search finds something.</p></details>
+          <details><summary>Do I have to accept right away?</summary><p>No. Take three days, take three weeks. We won't call you in between unless you ask us to.</p></details>
+        </div>
+        <div>
+          <details><summary>I inherited a house and probate is still open. Can you buy it?</summary><p>Yes, and it's one of the situations we handle most. We work with your probate attorney and the title company, and can write the contract subject to court confirmation where Oklahoma requires it. Fair warning: in a regular probate, a private sale generally must be confirmed at 90% or more of appraised value, so we'll tell you early if that limits the price.</p></details>
+          <details><summary>I live out of state. Do I have to fly back?</summary><p>No. We handle fully remote closings — e-signatures, electronic notarization where permitted, and overnight document delivery through the title company.</p></details>
+          <details><summary>What if I'm behind on payments or facing foreclosure?</summary><p>We can close before the sale date and pay the arrears and liens through the title company at closing, so you see every number first. We do not stop foreclosures or negotiate with your lender — if you want to keep the house, talk to a HUD-approved housing counselor.</p></details>
+          <details><summary>I have tenants. Do I have to evict them first?</summary><p>No. We buy with tenants in place, honor the existing lease and take over as the new landlord.</p></details>
+          <details><summary>Back taxes, liens, code violations?</summary><p>All normal. They're paid at closing out of the proceeds, and you'll see every line on the settlement statement before you sign.</p></details>
+          <details><summary>Can I stay in the house for a while after closing?</summary><p>Usually yes. We put the dates in writing so you're not moving twice.</p></details>
+          <details><summary>Will you spam me if I ask for an offer?</summary><p>No. One conversation, one written number. We follow up only if you ask, and we never sell or share your information.</p></details>
+          <details><summary>What if I change my mind?</summary><p>Cancel any time before closing. No fee, no argument.</p></details>
+        </div>
+      </div>
+      <p class="tiny" style="margin-top:16px">Build note: the winner runs 28 questions. Add yours until this list covers every question you've been asked twice.</p>
+    </section>
+
+    <!-- BLOCK 8 · pressure control, with a number -->
+    <section class="sec">
+      <div class="eyebrow">No pressure — as a rule, not a slogan</div>
+      <h2 style="margin-top:10px">Take three days. We won't call.</h2>
+      <p class="lead">Every offer is no-obligation, and we put a number on "no pressure": after you get the written offer, you have at least three days to think, ask your family, or show it to an attorney — and we don't contact you in that window unless you contact us first.</p>
+      <blockquote class="quote">"Never tried to force us into a deal we did not want."<cite>5★ review of a local Oklahoma cash buyer — the kind of line we intend to earn</cite></blockquote>
+    </section>
+
+    <!-- BLOCK 9 · proof: case studies with photos (real ones only) -->
+    <section class="sec">
+      <div class="eyebrow">Houses we've bought</div>
+      <h2 style="margin-top:10px">Real houses, real dates, real people — or nothing at all</h2>
+      <p class="lead">This is the block the winner leaves thin. Fill it only with real cases: the city, the month, what the seller was dealing with, what they kept, what the closing looked like. Photos before and after. Never invent one.</p>
+      <div class="grid g3">
+        <div class="proof-slot">Case study 1 — inherited house, out-of-state heir<br>photo · city · month · result</div>
+        <div class="proof-slot">Case study 2 — hail-damaged roof, insurance non-renewal<br>photo · city · month · result</div>
+        <div class="proof-slot">Case study 3 — rental sold with tenants in place<br>photo · city · month · result</div>
+      </div>
+      <div class="grid g2" style="margin-top:16px">
+        <div class="proof-slot">Google reviews widget — live, linked, real count</div>
+        <div class="proof-slot">3 testimonials: first name · city · situation · one sentence</div>
+      </div>
+    </section>
+
+    <!-- final CTA -->
+    <section class="sec">
+      <div class="finalcta">
+        <div>
+          <div class="eyebrow">Get started</div>
+          <h2 style="margin-top:10px">Get a number you can plan around.</h2>
+          <div class="rule"></div>
+          <p class="lead">Written offer within 24 hours of the walk-through, with the math and the Price Lock attached. No fees, no repairs, no pressure — and nobody shows up at your door unannounced.</p>
+          <p class="small" style="margin-top:16px">Prefer to talk? <span class="ph">[FOUNDER]</span> · <span class="ph">[PHONE]</span> · 8am–8pm</p>
+        </div>
+        <div class="card accent"><h3>Or scroll up and use the form</h3><p class="small">Four fields: name, address, phone, email. That's it.</p><div style="margin-top:14px"><a class="btn" href="#offer">Get a cash offer</a></div></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wave"><svg viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 C 240 20, 480 20, 720 60 S 1200 110, 1440 50 L1440 120 L0 120 Z" fill="var(--wave)"/><path d="M0 70 C 240 20, 480 20, 720 60 S 1200 110, 1440 50" fill="none" stroke="#C5333D" stroke-width="7"/></svg></div>
+  <footer class="site"><div class="in">
+    <div><a class="logo" href="#"><svg style="--m1:#F7F5F0"><use href="#phb-mark"/></svg><span class="wordmark"><b>PATRIOT</b><span>HOME BUYER</span></span></a><p class="tag">People. Properties. A Stronger Tomorrow.</p><p class="legal" style="margin-top:12px"><span class="ph">[ADDRESS]</span> · <span class="ph">[PHONE]</span> · <span class="ph">[EMAIL]</span> · 8am–8pm</p></div>
+    <p class="legal">Patriot Home Buyer buys houses directly for its own account in <span class="ph">[AREA]</span>. We are not real estate agents and do not list properties. Offers are estimates until a written agreement is signed. All closings take place at a licensed Oklahoma title company. Guarantees are governed by the written agreement you sign. Nothing on this page is legal, tax or financial advice.</p>
+  </div></footer>
+</main>
+
+<div class="sticky-mobile"><a class="btn call" href="#">Call <span class="ph" style="background:transparent;color:#fff;border-color:#fff">[PHONE]</span></a><a class="btn" href="#offer">Get my offer</a></div>
+
+<script>
+(function(){
+  var f=document.querySelector('form');
+  f.addEventListener('submit',function(e){e.preventDefault();var n=f.querySelector('.formnote');n.textContent='Demo page — nothing was sent. Wire this form to your CRM and add a real CAPTCHA before launch.';n.style.color='#C5333D';});
+})();
+</script>
