@@ -158,6 +158,7 @@ footer.site .legal{font-size:13px;color:#C3CCD6;line-height:1.5}
         <div><label for="f-addr">Property address</label><input id="f-addr" placeholder="123 Main St, Oklahoma City"></div>
         <div><label for="f-phone">Phone</label><input id="f-phone" inputmode="tel"></div>
         <div><label for="f-email">Email</label><input id="f-email" inputmode="email"></div>
+        <div style="position:absolute;left:-9999px" aria-hidden="true"><label for="f-company">Company</label><input id="f-company" name="company" tabindex="-1" autocomplete="off"></div>
         <label class="consent" for="f-terms"><input type="checkbox" id="f-terms"><span>I agree to the Terms of Use and Privacy Policy.</span></label>
         <label class="consent" for="f-sms"><input type="checkbox" id="f-sms"><span>I agree that Patriot Home Buyer may call, text or email me about my property at the number provided, including with automated systems. Consent is not a condition of any sale. Msg &amp; data rates may apply. Reply STOP to opt out.</span></label>
         <div class="captcha"><i></i> I'm not a robot <span class="tiny">(CAPTCHA goes here)</span></div>
@@ -333,6 +334,40 @@ footer.site .legal{font-size:13px;color:#C3CCD6;line-height:1.5}
 <script>
 (function(){
   var f=document.querySelector('form');
-  f.addEventListener('submit',function(e){e.preventDefault();var n=f.querySelector('.formnote');n.textContent='Demo page — nothing was sent. Wire this form to your CRM and add a real CAPTCHA before launch.';n.style.color='#C5333D';});
+  var note=f.querySelector('.formnote');
+  var btn=f.querySelector('button[type=submit]');
+  f.addEventListener('submit',async function(e){
+    e.preventDefault();
+    var val=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
+    var payload={
+      name:val('f-name'), address:val('f-addr'), phone:val('f-phone'), email:val('f-email'),
+      company:val('f-company'),
+      smsConsent:!!(document.getElementById('f-sms')||{}).checked
+    };
+    if(!payload.address){note.textContent='Add the property address so we know what we\u2019re pricing.';note.style.color='#C5333D';return;}
+    if(!payload.phone && !payload.email){note.textContent='Add a phone or an email so we can send the offer.';note.style.color='#C5333D';return;}
+    if(!(document.getElementById('f-terms')||{}).checked){note.textContent='Please accept the Terms and Privacy Policy.';note.style.color='#C5333D';return;}
+    btn.disabled=true; var label=btn.textContent; btn.textContent='Sending\u2026';
+    note.style.color=''; note.textContent='One moment\u2026';
+    try{
+      var r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      var j=await r.json().catch(function(){return {};});
+      if(r.ok && j.ok){
+        f.innerHTML='<h3>Got it. Here\u2019s what happens next.</h3>'+
+          '<p class="small" style="margin-top:10px">1. We call you from the number on this page, usually within a few business hours.<br>'+
+          '2. We set the walk-through at a time that suits you \u2014 30\u201340 minutes.<br>'+
+          '3. You get the written offer with the Price Lock attached within 24 hours after that.</p>'+
+          '<p class="small" style="margin-top:12px">Need us sooner? Call <b>[PHONE]</b>.</p>';
+        f.scrollIntoView({behavior:'smooth',block:'center'});
+        return;
+      }
+      note.textContent=(j && j.error) ? j.error : 'That didn\u2019t go through. Please call us instead.';
+      note.style.color='#C5333D';
+    }catch(err){
+      note.textContent='That didn\u2019t go through. Please call us instead.';
+      note.style.color='#C5333D';
+    }
+    btn.disabled=false; btn.textContent=label;
+  });
 })();
 </script>
